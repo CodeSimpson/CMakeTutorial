@@ -38,10 +38,15 @@
   // the configured options and settings for Tutorial
   #define Tutorial_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
   #define Tutorial_VERSION_MINOR @Tutorial_VERSION_MINOR@
+  
+  // 构建后自动生成的TotorialConfig.h内容为
+  // the configured options and settings for Tutorial
+  #define Tutorial_VERSION_MAJOR 1
+  #define Tutorial_VERSION_MINOR 0
   ```
-
-  `@Tutorial_VERSION_MAJOR@`值为1，`@Tutorial_VERSION_MINOR@`值为0，需要说明一下这里版本号占位符的命名规则
-
+  
+  `@Tutorial_VERSION_MAJOR@`**值为1**，`@Tutorial_VERSION_MINOR@`值为0，需要说明一下这里版本号占位符的命名规则
+  
   ​		代表项目版本号的占位符的命名规则是： `@PROJECT_NAME_VERSION_MAJOR@`：代表项目的主版本号。 `@PROJECT_NAME_VERSION_MINOR@`：代表项目的次版本号。 `@PROJECT_NAME_VERSION_PATCH@`：代表项目的修订版本号。其中，`PROJECT_NAME`是在`project()`命令中指定的项目名称。如果你的项目名称是`MyProject`，那么在`TutorialConfig.h.in`文件中，代表项目版本号的占位符应该是
   
   `@MyProject_VERSION_MAJOR@`
