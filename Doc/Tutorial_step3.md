@@ -23,7 +23,13 @@ target_include_directories(MathFunctions INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
 * `INTERFACE`和`PUBLIC`的区别
 
-`INTERFACE`和`PUBLIC`都是CMake中用于设置库的头文件搜索路径的关键字，它们的区别在于： - `INTERFACE`关键字表示这个头文件搜索路径是用于这个库的接口，即这个库的用户也需要使用这个头文件搜索路径。 - `PUBLIC`关键字表示这个头文件搜索路径是用于这个库的接口和依赖库的接口，即其他依赖于这个库的库也可以使用这个头文件搜索路径。 因此，如果一个库的头文件搜索路径只需要用于这个库的接口，那么可以使用`INTERFACE`关键字；如果这个头文件搜索路径还需要用于其他依赖于这个库的库的接口，那么应该使用`PUBLIC`关键字。
+`INTERFACE`和`PUBLIC`都是CMake中用于设置库的头文件搜索路径的关键字，它们的区别在于： 
+
+1. `INTERFACE`关键字表示这个头文件搜索路径是用于这个库的接口，即这个库的用户也需要使用这个头文件搜索路径。
+
+2. `PUBLIC`关键字表示这个头文件搜索路径是用于这个库的接口和依赖库的接口，即其他依赖于这个库的库也可以使用这个头文件搜索路径。
+
+因此，如果一个库的头文件搜索路径只需要用于这个库的接口，那么可以使用`INTERFACE`关键字；如果这个头文件搜索路径还需要用于其他依赖于这个库的库的接口，那么应该使用`PUBLIC`关键字。
 
 这里我们修改子目录`MathFunctions`中的CMakeLists.txt文件，top level的CMakeLists.txt文件中的相关修改可以直接删除，`tutorial.cxx`中还是可以直接引用头文件`TutorialConfig.h`。
 
