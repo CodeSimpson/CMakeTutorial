@@ -55,7 +55,7 @@
   
   `@MyProject_VERSION_PATCH@`
   
-  还有一点，当我们使用`configure_file`命令生成配置文件（这里是头文件 `TutorialConfig.h`）时，配置文件会被写入到二进制树中，这意味着，生成的配置文件不会被放置在源代码目录中，而是会被放置在构建目录中。因此，为了能够在源代码中包含这个配置文件，我们需要将构建目录添加到**包含文件搜索路径列表**中，有两种方法：
+  还有一点，当我们使用`configure_file`命令生成配置文件（这里是头文件 `TutorialConfig.h`）时，配置文件会被写入到二进制树中，这意味着，生成的配置文件不会被放置在源代码目录中，而是会被放置在构建目录中。因此，为了能够在源代码中包含这个配置文件，我们需要将构建目录添加到**头文件搜索路径列表**中，有两种方法：
   
   ```cmake
   # 方法一
@@ -72,11 +72,11 @@
   
     `${MY_VARIABLE}` 将会被替换为变量 `MY_VARIABLE` 的值。在 CMake 中，变量名通常使用大写字母。
   
-  * `target_include_directories`和`include_directories`都可以用来将目录添加到包含文件搜索路径列表中，但它们的作用范围不同。`include_directories`命令将目录添加到全局包含文件搜索路径列表中，这意味着所有的目标都可以访问这个目录中的头文件。而`target_include_directories`命令则是将目录添加到特定目标的包含文件搜索路径列表中，这意味着只有这个目标（这里指 Tutorial）可以访问这个目录中的头文件。
+  * `target_include_directories`和`include_directories`都可以用来将目录添加到头文件搜索路径列表中，但它们的作用范围不同。`include_directories`命令将目录添加到全局头文件搜索路径列表中，这意味着所有的目标都可以访问这个目录中的头文件。而`target_include_directories`命令则是将目录添加到特定目标的包头文件搜索路径列表中，这意味着只有这个目标（这里指 Tutorial）可以访问这个目录中的头文件。
   
-    在这个例子中，`target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}")`命令将`${PROJECT_BINARY_DIR}`目录添加到`Tutorial`目标的包含文件搜索路径列表中，并且将其设置为`PUBLIC`属性。这意味着，不仅`Tutorial`目标可以访问`${PROJECT_BINARY_DIR}`目录中的头文件，其他依赖于`Tutorial`的目标也可以访问这个目录中的头文件。
+    在这个例子中，`target_include_directories(Tutorial PUBLIC "${PROJECT_BINARY_DIR}")`命令将`${PROJECT_BINARY_DIR}`目录添加到`Tutorial`目标的头文件搜索路径列表中，并且将其设置为`PUBLIC`属性。这意味着，不仅`Tutorial`目标可以访问`${PROJECT_BINARY_DIR}`目录中的头文件，其他依赖于`Tutorial`的目标也可以访问这个目录中的头文件。
   
-    相比之下，`include_directories(${CMAKE_BINARY_DIR})`命令将`${CMAKE_BINARY_DIR}`目录添加到**全局包含文件搜索路径列表**中，这意味着所有的目标都可以访问`${CMAKE_BINARY_DIR}`目录中的头文件。但是，这种方法可能会导致命名冲突或者不必要的头文件包含，因为所有的目标都可以访问这个目录中的头文件。因此，最好使用`target_include_directories`命令将目录添加到特定目标的包含文件搜索路径列表中。
+    相比之下，`include_directories(${CMAKE_BINARY_DIR})`命令将`${CMAKE_BINARY_DIR}`目录添加到**全局头文件搜索路径列表**中，这意味着所有的目标都可以访问`${CMAKE_BINARY_DIR}`目录中的头文件。但是，这种方法可能会导致命名冲突或者不必要的头文件包含，因为所有的目标都可以访问这个目录中的头文件。因此，最好使用`target_include_directories`命令将目录添加到特定目标头文件搜索路径列表中。
   
 * CMAKE_CXX_STANDARD / CMAKE_CXX_STANDARD_REQUIRED
 
