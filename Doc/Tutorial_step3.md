@@ -17,7 +17,7 @@ target_include_directories(Tutorial PUBLIC ${EXTRA_LIBS})
 target_include_directories(MathFunctions INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 ```
 
-在这里，目标是MathFunctions库，`INTERFACE`关键字表示这个头文件搜索路径是用于这个库的接口，即这个库的用户也需要使用这个头文件搜索路径。`${CMAKE_CURRENT_SOURCE_DIR}`表示当前CMakeLists.txt文件所在的目录，也就是MathFunctions库的根目录。因此，这行代码的作用是将MathFunctions库的根目录添加到头文件搜索路径中，以便在使用MathFunctions库的时候可以方便地包含其头文件。
+在这里，目标是MathFunctions库，`INTERFACE`关键字表示这个头文件搜索路径是用于这个库的接口，即这个库的用户也需要使用这个头文件搜索路径。`${CMAKE_CURRENT_SOURCE_DIR}`表示当前CMakeLists.txt文件所在的目录，也就是MathFunctions库的根目录。因此，这行代码的作用是将MathFunctions库的根目录添加到头文件搜索路径中，以便其它项目在使用MathFunctions库的时候可以方便地包含其头文件。
 
 > 头文件搜索路径和库对应，在这里指MathFunctions库的根目录
 

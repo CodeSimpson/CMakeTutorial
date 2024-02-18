@@ -35,7 +35,7 @@ target_link_libraries(Tutorial PUBLIC MathFunctions)
 
 #### 3. 添加新库接口对应的头文件
 
-* target_include_directories(): 将目录添加到*头文件搜索路径列表**中。
+* target_include_directories(): 将目录添加到**头文件搜索路径列表**中。
 
 ```cmake
 target_include_directories(Tutorial PUBLIC "${PROJECT_SOURCE_DIR}/MathFunctions")
