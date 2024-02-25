@@ -11,7 +11,7 @@ target_include_directories(Tutorial PUBLIC ${EXTRA_LIBS})
 
 新方法：
 
-* target_include_directories(): 将目录添加到**头文件搜索路径列表**中。
+* target_include_directories(): 该命令用于为一个目标（target）指定头文件搜索路径。
 
 ```cmake
 target_include_directories(MathFunctions INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
