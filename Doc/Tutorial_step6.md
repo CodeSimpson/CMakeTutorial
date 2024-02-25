@@ -6,7 +6,7 @@
 
 #### 1. 使能 CDash
 
-* include(): 用于包含其他CMake脚本文件。
+* include(): 用于加载CMake的一个模块。
 
 ​	这里删除使能 CTest 的命令`enable_testing()`，在项目根目录下通过`include`命令包含 CTest 模块，这将同时使能 CTest 和提交测试面板到 CDash 中。
 
